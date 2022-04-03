@@ -41,7 +41,7 @@ public class Quiz {
             score += 5;
         }
 
-        if (answer4.equals("Hermione Granger")) {
+        if (answer4.equals("Hermione Granger") || answer4.equals("Ron Weasley")) {
             score += 5;
         }
         
