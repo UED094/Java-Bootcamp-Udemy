@@ -2,4 +2,4 @@
 
 My personal solutions for the workbooks and challenges for this udemy course. 
 
-<center> <b> Ugur Emre Dogan </b></center>
+<div align="center">**Ugur Emre Dogan**</div align="center">
