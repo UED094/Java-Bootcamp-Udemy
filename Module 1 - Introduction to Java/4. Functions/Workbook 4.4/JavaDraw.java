@@ -14,12 +14,25 @@ public class JavaDraw {
 
         //Task 1 – Pick up the user's choice.
 
+        choice = scan.nextInt();
+
         //Task 3 – Call the draw function, and pass in the user's choice.
+        draw(choice);
         scan.close();
     }
 
 
        //Task 2 – Write a function 
+    public static void draw(int choice) {
+        switch (choice) {
+                case 1: drawButterfly(); break;
+                case 2: drawElephant(); break;
+                case 3: drawBear(); break;
+                case 4: drawSnake(); break;
+                default: System.out.println("This is not an option, please choice a valid option."); break;
+        }
+
+    }
 
     /**
      * Function name: draw - draws an animal that the user chooses.
@@ -31,7 +44,85 @@ public class JavaDraw {
      *      2. elephant
      *      3. bear
      *      4. snake
-     */  
+     */ 
+
+    public static void drawButterfly(){
+        System.out.println("  .==-.                   .-==.     ");
+        System.out.println("   \\()8`-._  `.   .'  _.-'8()/     ");
+        System.out.println("   (88\"   ::.  \\./  .::   \"88)     ");
+        System.out.println("    \\_.'`-::::.(#).::::-'`._/      ");
+        System.out.println("      `._... .q(_)p. ..._.'         ");
+        System.out.println("        \"\"-..-'|=|`-..-\"\"       ");
+        System.out.println("        .\"\"' .'|=|`. `\"\".       ");
+        System.out.println("      ,':8(o)./|=|\\.(o)8:`.        ");
+        System.out.println("     (O :8 ::/ \\_/ \\:: 8: O)      ");
+        System.out.println("      \\O `::/       \\::' O/       ");
+        System.out.println("       \"\"--'         `--\"\"      ");
+    }
+
+    public static void drawElephant(){
+        System.out.println("       _..--\"\"-.                  .-\"\"--.._ ");
+        System.out.println("   _.-'         \\ __...----...__ /         '-._");
+        System.out.println(" .'      .:::...,'              ',...:::.      '.");
+        System.out.println("(     .'``'''::;                  ;::'''``'.     )");
+        System.out.println(" \\             '-)              (-'             /");
+        System.out.println("  \\             /                \\             /");
+        System.out.println("   \\          .'.-.            .-.'.          /");
+        System.out.println("    \\         | \\0|            |0/ |         /");
+        System.out.println("    |          \\  |   .-==-.   |  /          |");
+        System.out.println("     \\          `/`;          ;`\\`          /");
+        System.out.println("      '.._      (_ |  .-==-.  | _)      _..'");
+        System.out.println("          `\"`\"-`/ `/'        '\\` \\`-\"`\"`");
+        System.out.println("               / /`;   .==.   ;`\\ \\");
+        System.out.println("         .---./_/   \\  .==.  /   \\ \\");
+        System.out.println("       | =(`-.        '==.   ;");
+        System.out.println("        \\  '. `-.           /");
+        System.out.println("         \\_:_)   `\"--.....-'");
+        System.out.println("        / '.    `-.__)       |    `\"");
+    }
+    
+    public static void drawBear(){
+        System.out.println("            ___   .--. ");
+        System.out.println("      .--.-\"   \"-' .- |");
+        System.out.println("     / .-,`          .'");
+        System.out.println("     \\   `           \\");
+        System.out.println("      '.            ! \\");
+        System.out.println("        |     !  .--.  |");
+        System.out.println("        \\        '--'  /.____");
+        System.out.println("       /`-.     \\__,'.'      `\\");
+        System.out.println("    __/   \\`-.____.-' `\\      /");
+        System.out.println("    | `---`'-'._/-`     \\----'    _");
+        System.out.println("    |,-'`  /             |    _.-' `\\");
+        System.out.println("   .'     /              |--'`     / |");
+        System.out.println("  /      /\\              `         | |");
+        System.out.println("  |   .\\/  \\      .--. __          \\ |");
+        System.out.println("   '-'      '._       /  `\\         /");
+        System.out.println("               `\\    '     |------'`");
+        System.out.println("                 \\  |      |");
+        System.out.println("                  \\        /");
+        System.out.println("                   '._  _.'");
+        System.out.println("                      ``");
+    }
+
+    public static void drawSnake() {
+        System.out.println("         ,,'6''-,.");
+        System.out.println("        <====,.;;--.");
+        System.out.println("        _`---===. \"\"\"==__");
+        System.out.println("      //\"\"@@-\\===\\@@@@ \"\"\\\\");
+        System.out.println("     |( @@@  |===|  @@@  ||");
+        System.out.println("      \\\\ @@   |===|  @@  //");
+        System.out.println("        \\\\ @@ |===|@@@ //");
+        System.out.println("         \\\\  |===|  //");
+        System.out.println("___________\\\\|===| //_____,----\"\"\"\"\"\"\"\"\"\"-----,_");
+        System.out.println("  \"\"\"\"---,__`\\===`/ _________,---------,____    `,");
+        System.out.println("             |==||                           `\\   \\");
+        System.out.println("            |==| |                             )   |");
+        System.out.println("           |==| |       _____         ______,--'   '");
+        System.out.println("           |=|  `----\"\"\"     `\"\"\"\"\"\"\"\"         _,-'");
+        System.out.println("            `=\\     __,---\"\"\"-------------\"\"\"''");
+        System.out.println("                \"\"\"\"		");
+    }
+
 
      /*
      
