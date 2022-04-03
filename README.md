@@ -2,4 +2,4 @@
 
 My personal solutions for the workbooks and challenges for this udemy course. 
 
-Ugur Emre Dogan
+<center> <b> Ugur Emre Dogan </b></center>
