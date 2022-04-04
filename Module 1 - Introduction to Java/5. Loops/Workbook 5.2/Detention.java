@@ -9,7 +9,7 @@ public class Detention {
         String printText = scan.nextLine();
 
         for (int i = 0; i < 100; i++) {
-            System.out.println(printText);
+            System.out.println(i + ". " + printText);
         }
     }
 }
