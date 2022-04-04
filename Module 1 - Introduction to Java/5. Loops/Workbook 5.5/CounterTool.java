@@ -20,13 +20,23 @@ public class CounterTool {
                 pick up the user's answer 
                 
         */
-        
+        System.out.print("Pick a number to count by: ");
+        int countInterval = scan.nextInt();
+        System.out.print("\nPick a number to start counting from: ");
+        int countFrom = scan.nextInt();
+        System.out.print("Pick a number to count to: ");
+        int countTo = scan.nextInt();
+
+
 
       /* Task 2 – Create a for loop that:
             1. starts from the second number.
             2. stops at the third number. 
             3. counts in steps of the first.
       */
+      for (int i = countFrom; i < countTo; i += countInterval ) {
+        System.out.println(i+" ");
+      }
 
         scan.close();
     }
