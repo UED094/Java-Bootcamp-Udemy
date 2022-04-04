@@ -11,8 +11,10 @@ public class SignIn {
         Scanner scan = new Scanner(System.in);
         System.out.println("\nWelcome to Javagram! Sign in below\n");
         System.out.print("• Username: ");
+        String username1 = scan.nextLine();
         //pick up username
         System.out.print("• Password: ");
+        String password1 = scan.nextLine();
         //pick up password
 
         /* Task 2 
@@ -22,7 +24,15 @@ public class SignIn {
                 •  get them to enter their username and password again
             2. After they enter the correct information, print: 
                    \nSign in successful. Welcome!
-       */
+       */ 
+        while (!username1.equals(username) || !password1.equals(password) ) {
+            System.out.println("\nIncorrect, please try again!\n");
+            System.out.print("• Username: ");
+            username1 = scan.nextLine();
+            System.out.print("• Password: ");
+            password1 = scan.nextLine();
+        }
+        System.out.println("\nSign in successful. Welcome!");
 
         scan.close();
 
