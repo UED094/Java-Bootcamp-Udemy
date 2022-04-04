@@ -7,10 +7,17 @@ public class Guess  {
             1. Store a "secret" number between 1 and 5. 
             2. Then, prompt the user to enter a guess.
        */
-       System.out.print("I chose a number between 1 and 5. Try to guess it: ");
+        int secret = 2;
+        System.out.print("I chose a number between 1 and 5. Try to guess it: ");
         
-       Scanner scan = new Scanner(System.in);
-
+        Scanner scan = new Scanner(System.in);
+        int guess = scan.nextInt();;
+        
+        while (secret != guess) {
+            System.out.println("Guess again");
+            guess = scan.nextInt();
+        }
+        System.out.println("You got it.");
 
         /* Task 2 
             1. Set up a loop that keeps running while the user is incorrect
