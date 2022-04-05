@@ -94,6 +94,7 @@ public class JavaRolls {
                   Tough luck, you lose :( 
       */
 
+      scan.close();
     }
   
   
