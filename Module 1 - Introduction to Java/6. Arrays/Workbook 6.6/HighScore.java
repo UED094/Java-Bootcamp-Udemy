@@ -20,6 +20,12 @@ public class HighScore {
          *   • It's the gentleman in seat: <index>. Give that man a cookie!
          *  
          */
+        for (int i = 0; i < scores.length; i++) {
+            if (scores[i] == highScore) {
+                System.out.println("\nThe highest score is: " + highScore + " Impressive!");
+                System.out.println("It's the gentleman in seat: " + i + " Give that man a cookie!");
+            }
+        }
     }
     
     public static int randomNumber() {
