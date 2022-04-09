@@ -5,9 +5,13 @@ public class Weather {
         
         double[] celsius = {12.5, 14.5, 17.0, 21.0, 23.0, 18.5, 20.0};
         double[] fahrenheit;
-        //Task 2, call celsiusToFahrenheit and store the result in the fahrenheit array. 
+        //Task 2, call celsiusToFahrenheit and store the result in the fahrenheit array.
+        
+        fahrenheit = celciusToFahrenheit(celsius);
 
         //Task 4, Call printTemperatures for celsius and fahrenheit.
+        printTemperatures(celsius, "Celcius");
+        printTemperatures(fahrenheit, "Fahrenheit");
     }
 
 
@@ -21,7 +25,14 @@ public class Weather {
      *    2. Copy all the values from celsius into the fahrenheit array.
      *    3. Update all the values in the array according to: F = (C/5 * 9) + 32.
      *    4. return the fahrenheit array.
-     */   
+     */ 
+    public static double[] celciusToFahrenheit(double[] celsius) {
+        double[] fahrenheit = celsius.clone();
+        for (int i = 0; i < fahrenheit.length; i++) {
+            fahrenheit[i] = (fahrenheit[i]/5 * 9) + 32;
+        }
+        return fahrenheit;
+    }
 
     /** Task 3
      * Function name - printTemperatures
@@ -34,6 +45,12 @@ public class Weather {
      *   2. Adds a new line of space after printing the contents of the array.
      *   3. (Task 5) Rounds every temperature value to two decimal places. 
      */
-
+    public static void printTemperatures (double[] temp, String type) {
+        System.out.print(type + " :");
+        for (int i = 0; i < temp.length; i++) {
+            System.out.print(String.format("%.2f", temp[i]) + " ");
+        }
+        System.out.println();
+    }
 
 }
