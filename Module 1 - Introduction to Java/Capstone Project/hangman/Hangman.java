@@ -1,6 +1,8 @@
 import java.sql.Array;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.lang.StringBuilder;
+import java.net.SocketTimeoutException;
 
 import javax.print.Doc;
 
@@ -74,20 +76,40 @@ public class Hangman {
 
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
+        StringBuilder missedGuesses = new StringBuilder();
         String word = randomWord(words);
         char[] characters = word.toCharArray();
         char[] placeholder = createPlaceHolder(characters) ;
         System.out.println("Welcome to the Hangman Game!");
         System.out.println("You know the rules... Enter one letter a time until you find the right word...");
         
-        //System.out.println(word);
-        char guessLetter = scan.nextLine().charAt(0);
-        System.out.println(checkGuess(guessLetter, characters));
         int misses = 0;
-        while (misses <= 6) {
-
+        
+        while (misses < 6) {
+            System.out.print("Your guess: ");
+            char guessLetter = scan.nextLine().charAt(0);
+            System.out.println();
             
+            if (checkGuess(guessLetter, characters)) {
+                updatePlaceholders(guessLetter, placeholder, characters);
+            } else {
+                missedGuesses.append(guessLetter);
+                misses++;
+            }
+            System.out.println(gallows[misses]);
+            
+            if (Arrays.equals(placeholder, characters)) {
+                System.out.println("Win!");
+                break;
+            } else if ( !Arrays.equals(placeholder, characters) && misses == 6) {
+                System.out.println("RIP!");
+                System.out.println("Correct word: " + word);
+                break;
+            }
+            printPlaceholders(placeholder);
+            printMissedGuesses(missedGuesses);            
         }
+        scan.close();
 
     }
 
@@ -108,6 +130,16 @@ public class Hangman {
         return word;
     }
 
+    /**
+     * Function Name: createPlaceHolder
+     * @param characters (char[])
+     * @return placeholder (char[])
+     * 
+     * Inside the function:
+     *  1. Create a char array equals the length of characters array.
+     *  2. Assign '_' to all the elements.
+     *  3. Return placeholder char array.
+     */
     public static char[] createPlaceHolder(char[] characters) {
         char[] placeholder = new char[characters.length];
         for (int i = 0; i < placeholder.length; i++) {
@@ -135,6 +167,50 @@ public class Hangman {
         }
         return false;
         }
+    
+    /**
+     * Function Name : updatePlaceholders
+     * @param guessLetter (char)
+     * @param placeholder (char[])
+     * @param characters (char[])
+     * 
+     * Inside the function: 
+     *  1. if guess letter is available in characters array updates the placeholder array.
+     */
+    public static void updatePlaceholders(char guessLetter, char[] placeholder, char[] characters) {
+        for (int i = 0; i < characters.length; i++) {
+            if (guessLetter == characters[i]) {
+                placeholder[i] = guessLetter;
+            }
+        }
+    }
+
+    /**
+     * Function Name : printPlaceholders
+     * @param placeholder
+     * 
+     * Inside the function:
+     *  1. Print the placeholder array in a good format.
+     */
+    public static void printPlaceholders(char[] placeholder) {
+        System.out.print("Word: ");
+        for (int i = 0; i < placeholder.length; i++) {
+            System.out.print(placeholder[i]+" ");
+        }
+        System.out.println("\n");
+    }
+
+    /**
+     * Function Name : printMissedGuesses
+     * @param missedGuesses
+     * 
+     * Inside the function:
+     *  1. Print the missed letters.
+     */
+    public static void printMissedGuesses(StringBuilder missedGuesses) {
+        System.out.println("Misses: " + missedGuesses + "\n\n");
+    }
+
 }
 
 
