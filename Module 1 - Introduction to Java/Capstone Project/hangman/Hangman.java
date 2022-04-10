@@ -85,7 +85,7 @@ public class Hangman {
         System.out.println(checkGuess(guessLetter, characters));
         int misses = 0;
         while (misses <= 6) {
-            
+
             
         }
 
@@ -93,7 +93,7 @@ public class Hangman {
 
     // FUNCTIONS 
     /**
-     * Function name : randomWord
+     * Function Name : randomWord
      * @param words (String[])
      * @return word (String)
      * 
@@ -116,6 +116,17 @@ public class Hangman {
         return placeholder;
     }
 
+    /**
+     * Function Name : checkGuess 
+     * @param guessLetter (char)
+     * @param characters (char[])
+     * @return (boolean)
+     * 
+     * Inside the function: 
+     *  1. Get the char guessLetter and characters array of word's characters.
+     *  2. Check if that char has a match inside of that characters array.
+     *  3. If it match return true and exit the fuction, if not finish the for loop and return false.
+     */
     public static boolean checkGuess(char guessLetter, char[] characters) {
         for (char c : characters) {
             if (c == guessLetter) {
