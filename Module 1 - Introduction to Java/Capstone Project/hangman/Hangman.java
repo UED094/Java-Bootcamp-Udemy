@@ -1,3 +1,6 @@
+import java.sql.Array;
+import java.util.Arrays;
+
 import javax.print.Doc;
 
 public class Hangman {
@@ -70,7 +73,9 @@ public class Hangman {
 
     public static void main(String[] args) {
         String word = randomWord(words);
-
+        char[] characters = word.toCharArray();
+        char[] placeholder = createPlaceHolder(characters) ;
+        
 
     }
 
@@ -89,6 +94,14 @@ public class Hangman {
         int index = (int)(Math.random()* words.length);
         String word = words[index];
         return word;
+    }
+
+    public static char[] createPlaceHolder(char[] characters) {
+        char[] placeholder = new char[characters.length];
+        for (int i = 0; i < placeholder.length; i++) {
+            placeholder[i] = '_';
+        }
+        return placeholder;
     }
 
 }
