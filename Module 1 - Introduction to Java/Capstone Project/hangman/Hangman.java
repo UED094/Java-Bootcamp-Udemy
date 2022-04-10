@@ -1,3 +1,5 @@
+import javax.print.Doc;
+
 public class Hangman {
 
     public static String[] words = {"ant", "baboon", "badger", "bat", "bear", "beaver", "camel",
@@ -67,17 +69,29 @@ public class Hangman {
     " =========\n"};
 
     public static void main(String[] args) {
-
-
-
-
+        String word = randomWord(words);
 
 
     }
 
+    // FUNCTIONS 
+    /**
+     * Function name : randomWord
+     * @param words (String[])
+     * @return word (String)
+     * 
+     * Inside the function:
+     *  1. Get a random index in the length of words array.
+     *  2. Choose a word with that index.
+     *  3. Return randomly choosen word.
+     */
+    public static String randomWord(String[] words) {
+        int index = (int)(Math.random()* words.length);
+        String word = words[index];
+        return word;
+    }
+
 }
-
-
 
 
 
