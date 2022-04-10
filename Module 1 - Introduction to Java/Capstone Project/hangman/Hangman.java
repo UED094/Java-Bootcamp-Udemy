@@ -1,5 +1,6 @@
 import java.sql.Array;
 import java.util.Arrays;
+import java.util.Scanner;
 
 import javax.print.Doc;
 
@@ -72,10 +73,21 @@ public class Hangman {
     " =========\n"};
 
     public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
         String word = randomWord(words);
         char[] characters = word.toCharArray();
         char[] placeholder = createPlaceHolder(characters) ;
+        System.out.println("Welcome to the Hangman Game!");
+        System.out.println("You know the rules... Enter one letter a time until you find the right word...");
         
+        //System.out.println(word);
+        char guessLetter = scan.nextLine().charAt(0);
+        System.out.println(checkGuess(guessLetter, characters));
+        int misses = 0;
+        while (misses <= 6) {
+            
+            
+        }
 
     }
 
@@ -104,6 +116,14 @@ public class Hangman {
         return placeholder;
     }
 
+    public static boolean checkGuess(char guessLetter, char[] characters) {
+        for (char c : characters) {
+            if (c == guessLetter) {
+                return true;
+            }
+        }
+        return false;
+        }
 }
 
 
