@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 import javax.sound.midi.Track;
 
 public class Person {
@@ -12,6 +14,7 @@ public class Person {
         this.nationality = nationality;
         this.dateOfBirth = dateOfBirth;
         this.seatNumber = seatNumber;
+        this.passport = new String[3];
     }
 
     public Person(Person source) {
@@ -19,6 +22,7 @@ public class Person {
         this.nationality = source.nationality;
         this.dateOfBirth = source.dateOfBirth;
         this.seatNumber = source.seatNumber;
+        this.passport = Arrays.copyOf(source.passport, source.passport.length);
     }
 
     // Getters
@@ -38,6 +42,10 @@ public class Person {
         return this.seatNumber;
     }
 
+    public String[] getPassport() {
+        return this.passport.clone();
+    }
+
     // Setters
     public void setName(String name) {
         this.name = name;
@@ -53,6 +61,12 @@ public class Person {
 
     public void setSeatNumber(int seatNumber) {
         this.seatNumber = seatNumber;
+    }
+
+    public void setPassport() {
+        this.passport[0] = this.name;
+        this.passport[1] = this.nationality;
+        this.passport[2] = this.dateOfBirth;
     }
 
     /**
