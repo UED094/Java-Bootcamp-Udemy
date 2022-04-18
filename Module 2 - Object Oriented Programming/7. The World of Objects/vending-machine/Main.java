@@ -1,5 +1,9 @@
+import java.net.SocketTimeoutException;
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
 
         System.out.println("\t************************************************");
         System.out.println("\t             WELCOME TO JAVA DRINKS!            ");
@@ -12,10 +16,30 @@ public class Main {
         };
         
         Machine machine = new Machine(items);
-        Item testItem = machine.getItem(2,1);
-        testItem.setPrice(2.99);
-        System.out.println(machine.getItem(2,1));
-        machine.dispense(2,1);
-        System.out.println(machine.getItem(2,1));
+        System.out.println(machine);
+
+        while (true) {
+            System.out.print("Pick a row: "); 
+            int row = scan.nextInt(); 
+            System.out.print("Pick a spot in the row: "); 
+            int spot = scan.nextInt();
+            scan.nextLine();
+            int retry =0;
+            boolean sold = machine.dispense(row, spot);
+            System.out.println("\n" + machine);
+
+            if (sold) {
+                System.out.println("\nEnjoy your drink! Press 1 to purchase another: ");
+            } else {
+                System.out.println("\nSorry, we're out of this item. Press 1 to purchase another: ");
+            }
+
+            if (scan.nextInt() != 1) {
+                System.out.println("Good Bye!");
+                break;
+            }
+        }
+
+
     }
 }

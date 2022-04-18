@@ -43,4 +43,18 @@ public class Machine {
         }
         
     }
+
+    public String toString() {
+        String temp = "";
+        for (int i = 0; i < items.length; i++) {
+            temp += "\t";
+            for (int j = 0; j < items[i].length; j++) {
+                temp += this.items[i][j].toString();
+                temp += " ";
+            }
+            temp += "\n\n";
+        }
+        temp += "\t************************************************";
+        return temp;
+    }
 }
