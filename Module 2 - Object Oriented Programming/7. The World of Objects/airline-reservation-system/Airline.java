@@ -29,8 +29,13 @@ public class Airline {
     public String toString() {
         String temp = "";
         for (int i = 0; i < seats.length; i++) {
-            temp += seats[i].toString();
-            temp += "\n\n";
+            if (seats[i] != null) {
+                temp += seats[i].toString();
+                temp += "\n\n";
+            } else {
+                temp += "Seat " + (i+1) + " is empty.";
+                temp += "\n\n";
+            }
         }
         return temp;
         
