@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Dealership {
     private Car[] cars;
 
@@ -39,15 +41,18 @@ public class Dealership {
      *     • println: \nYour search didn't match any results.\n
      *     • returns 404
      */
-    public String search(String make, int budget) {
+    public int search(String make, int budget) {
         for (int i = 0; i < this.cars.length; i++) {
             if (this.cars[i] == null) {
                 continue;
-            } else if (this.cars[i].getMake().equals(make) && this.cars[i].getPrice() <= budget) {
-                return "\nWe found one in spot " + i + "\n" + this.cars[i].toString() + "\nAre you interested ?";
+            } else if (this.cars[i].getMake().equalsIgnoreCase(make) && this.cars[i].getPrice() <= budget) {
+                System.out.println("\nWe found one in spot " + i + "\n" + this.cars[i].toString() + "\nAre you interested ?");
+                System.out.print("If you're interested, type 'yes':");
+                return i;
             }
         }
-        return "Sorry, we couldn't find any cars.";
+        System.out.println("\nYour search didn't match any results.\n");
+        return 404;
     }
 
     public String toString() {
