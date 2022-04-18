@@ -1,3 +1,6 @@
+import models.Employee;
+import models.Store;
+
 public class Main {
     public static void main(String[] args) {
         Employee stocker = new Employee("   ", null);
@@ -8,6 +11,6 @@ public class Main {
 
         System.out.println(store);
         store.open();
-        
+
     }
 }
