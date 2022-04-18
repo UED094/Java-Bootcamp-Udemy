@@ -34,8 +34,9 @@ public class Machine {
      *      • otherwise: returns false.
      */
     public boolean dispense(int row, int spot) {
-        if (this.items[row][spot].getQuantity() > 0 ) {
-            this.items[row][spot].setQuantity(this.items[row][spot].getQuantity() - 1);
+        int itemQuantity = this.items[row][spot].getQuantity();  
+        if (itemQuantity > 0 ) {
+            this.items[row][spot].setQuantity(itemQuantity - 1);
             return true;
         } else {
             return false;
