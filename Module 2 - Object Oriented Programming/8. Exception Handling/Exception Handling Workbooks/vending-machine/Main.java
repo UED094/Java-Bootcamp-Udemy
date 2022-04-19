@@ -24,9 +24,23 @@ public class Main {
 
         while (true) {
             System.out.print("Pick a row: ");
-            int row = scan.nextInt();
+            int row = scan.hasNextInt() ? scan.nextInt() : 404;
+            scan.nextLine();
+
             System.out.print("Pick a spot in the row: ");
-            int spot = scan.nextInt();
+            int spot = scan.hasNextInt() ? scan.nextInt() : 404;
+            scan.nextLine();
+
+            if (row == 404 || spot == 404) {
+                System.out.println("Invalid Input!");
+                continue;
+            } else if (row < 0 || row >= machine.getLength() || spot >= machine.getRowLength() || spot < 0) {
+                System.out.println("Invalid range!");
+                continue;
+            } else if (machine.getItem(row, spot).getQuantity() == 0) {
+                System.out.println("Empty slot!");
+                continue;
+            }
 
             machine.dispense(row, spot);
             System.out.println("\n" + machine);

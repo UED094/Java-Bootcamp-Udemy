@@ -41,4 +41,12 @@ public class Machine {
         return temp;
     }
 
+    public int getLength() {
+        return this.items.length;
+    }
+
+    public int getRowLength() {
+        return this.items[0].length;
+    }
+
 }
