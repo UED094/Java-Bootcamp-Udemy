@@ -1,3 +1,4 @@
+import java.net.SocketTimeoutException;
 import java.util.Scanner;
 
 import models.Car;
@@ -15,19 +16,40 @@ public class Main {
         cars[1].setMake("Honda");
         cars[1].setPrice(8500);
 
-        String name = "ugur";
-        name.isBlank();
         Dealership dealership = new Dealership(cars);
 
         System.out.println("\n************* JAVA DEALERSHIP *************");
         while (true) {
             System.out.println(dealership);
             System.out.print("Enter the spot number of the car you want to buy: ");
+
+            while (!scan.hasNextInt()) {
+                scan.nextLine();
+                System.out.println("INVALID INPUT");
+                continue;
+            }
             int spot = scan.nextInt();
-            dealership.sell(spot);
+            scan.nextLine();
+            if (spot < 0 || spot > dealership.getLength() - 1) {
+                System.out.println("Please choose a valid parking spot.");
+            } else if (dealership.getCar(spot) == null) {
+                System.out.println("Empty spot!");
+                continue;
+            } else {
+                dealership.sell(spot);
+            }
+            if (dealership.isEmpty()) {
+                System.out.println("We're all sold out!");
+                break;
+            }
+            System.out.println("Type 'yes' to continue shopping.");
+            if (!scan.nextLine().equalsIgnoreCase("yes")) {
+                break;
+            }
+
         }
 
-        // scan.close();
+        scan.close();
 
     }
 }
