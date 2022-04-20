@@ -22,6 +22,9 @@ public class ContactManager {
     }
 
     public void removeContact(String name) {
+        if (contacts.size() == 0) {
+            throw new IllegalStateException("Contact list is empty.");
+        }
         for (int i = 0; i < contacts.size(); i++) {
             if (contacts.get(i).getName().equalsIgnoreCase(name)) {
                 this.contacts.remove(i);
