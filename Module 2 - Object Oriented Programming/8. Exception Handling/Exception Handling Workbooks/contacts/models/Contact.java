@@ -94,13 +94,13 @@ public class Contact {
     }
 
     public String toString() {
-        return "Name: " + this.getName() + "\n" +
+        return "Name: " + this.name + "\n" +
 
-                "Phone number: " + this.getPhoneNumber() + "\n" +
+                "Phone number: " + this.phoneNumber + "\n" +
 
-                "Birth Date: " + this.getBirthDate() + "\n" +
+                "Birth Date: " + this.birthDate + "\n" +
 
-                "Age: " + this.getAge() + " year old\n";
+                "Age: " + this.age + " year old\n";
     }
 
 }
