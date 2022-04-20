@@ -13,6 +13,13 @@ public class Contact {
     private String phoneNumber;
 
     public Contact(String name, String phoneNumber, String birthDate) throws ParseException {
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
+        if (phoneNumber == null || phoneNumber.isEmpty() || phoneNumber.length() < 5) {
+            throw new IllegalArgumentException();
+        }
+
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.birthDate = birthDate;
@@ -43,6 +50,9 @@ public class Contact {
     }
 
     public void setName(String name) {
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException();
+        }
         this.name = name;
     }
 
@@ -56,6 +66,9 @@ public class Contact {
     }
 
     public void setPhoneNumber(String phoneNumber) {
+        if (phoneNumber == null || phoneNumber.isEmpty() || phoneNumber.length() < 5) {
+            throw new IllegalArgumentException();
+        }
         this.phoneNumber = phoneNumber;
     }
 
