@@ -3,17 +3,29 @@ import java.text.ParseException;
 import org.w3c.dom.css.CSS2Properties;
 
 import models.Contact;
+import models.ContactManager;
 
 public class Main {
     public static void main(String[] args) {
+        ContactManager contactManager = new ContactManager();
+
         try {
-            Contact contact = new Contact("Ugur", "5325555555", "05/11/1994");
-            System.out.println(contact);
+            Contact ryan = new Contact("Ryan", "6135012424", "11/11/1992");
+            Contact gio = new Contact("Gio", "6477092344", "11/11/1993");
+            Contact thomas = new Contact("Thomas", "8192256979", "11/11/1994");
+            contactManager.addContact(ryan);
+            contactManager.addContact(gio);
+            contactManager.addContact(thomas);
         } catch (ParseException e) {
             System.out.println(e.getMessage());
         } finally {
             System.out.println("Process Complete.");
         }
+
+        System.out.println(contactManager);
+        contactManager.removeContact("Gio");
+        System.out.println("************ NEW LIST **********");
+        System.out.println(contactManager);
 
     }
 

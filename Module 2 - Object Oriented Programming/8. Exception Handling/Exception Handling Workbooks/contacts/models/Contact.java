@@ -13,11 +13,14 @@ public class Contact {
     private String phoneNumber;
 
     public Contact(String name, String phoneNumber, String birthDate) throws ParseException {
-        if (name == null || name.isEmpty()) {
-            throw new IllegalArgumentException();
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("Name cannot be null/empty.");
         }
-        if (phoneNumber == null || phoneNumber.isEmpty() || phoneNumber.length() < 5) {
-            throw new IllegalArgumentException();
+        if (phoneNumber == null || phoneNumber.isBlank()) {
+            throw new IllegalArgumentException("Phone number cannot be null/empty.");
+        }
+        if (phoneNumber.length() < 5) {
+            throw new IllegalArgumentException("Phone number cannot be less than 5 digits.");
         }
 
         this.name = name;
@@ -50,8 +53,8 @@ public class Contact {
     }
 
     public void setName(String name) {
-        if (name == null || name.isEmpty()) {
-            throw new IllegalArgumentException();
+        if (name == null || name.isBlank()) {
+            throw new IllegalArgumentException("Name cannot be null/blank!");
         }
         this.name = name;
     }
@@ -66,8 +69,11 @@ public class Contact {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        if (phoneNumber == null || phoneNumber.isEmpty() || phoneNumber.length() < 5) {
+        if (phoneNumber == null || phoneNumber.isBlank()) {
             throw new IllegalArgumentException();
+        }
+        if (phoneNumber.length() < 5) {
+            throw new IllegalArgumentException("Phone number cannot be less than 5 digits.");
         }
         this.phoneNumber = phoneNumber;
     }
@@ -86,7 +92,7 @@ public class Contact {
      *
      */
     private int toAge(String birthDate) throws ParseException {
-        SimpleDateFormat formatter = new SimpleDateFormat(birthDate);
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
         formatter.setLenient(false);
         long diff = new Date().getTime() - formatter.parse(birthDate).getTime();
         int age = (int) (TimeUnit.MILLISECONDS.toDays(diff) / 365);
