@@ -1,7 +1,7 @@
 package models;
 
-import java.security.spec.MGF1ParameterSpec;
 import java.util.ArrayList;
+import java.util.jar.Attributes.Name;
 
 public class Store {
     ArrayList<Movie> movies;
@@ -29,18 +29,52 @@ public class Store {
     }
 
     public void action(String movieName, String action) {
+        if (!action.equals("sell") && !action.equals("rent") && !action.equals("return")) {
+            throw new IllegalArgumentException("This action cannot be done choose sell/rent/return.");
+        }
+        if (movieName == null || movieName.isBlank()) {
+            throw new IllegalArgumentException("Movie name cannot be null/blank.");
+        }
+        if (movies.isEmpty()) {
+            throw new IllegalStateException("There is no movie to be action on.");
+        }
+
         for (int i = 0; i < this.movies.size(); i++) {
             if (getMovie(i).getName().equalsIgnoreCase(movieName)) {
-                if (action.equalsIgnoreCase("Sell")) {
-                    movies.get(i).setAvailable(false);
-                    this.movies.remove(i);
-                } else if (action.equalsIgnoreCase("Rent")) {
-                    movies.get(i).setAvailable(false);
-                } else if (action.equalsIgnoreCase("Return")) {
-                    movies.get(i).setAvailable(true);
+                switch (action) {
+                    case "sell":
+                        if (!getMovie(i).isAvailable()) {
+                            throw new IllegalStateException("The movie you are trying to sell is rented.");
+                        }
+                        this.movies.remove(i);
+                        break;
+                    case "rent":
+                        if (!getMovie(i).isAvailable()) {
+                            throw new IllegalStateException("The movie is already rented.");
+                        }
+                        movies.get(i).setAvailable(false);
+                        break;
+                    case "return":
+                        if (getMovie(i).isAvailable()) {
+                            throw new IllegalStateException("You cannot return an item if it is already in-stock.");
+                        }
+                        movies.get(i).setAvailable(true);
+                        break;
+                    default:
+                        System.out.println("Wrong Action Requested!");
+                        break;
                 }
             }
         }
+    }
+
+    public Movie getMovie(String name) {
+        for (int i = 0; i < this.movies.size(); i++) {
+            if (getMovie(i).getName().equals(name)) {
+                return new Movie(getMovie(i));
+            }
+        }
+        return null;
     }
 
     public String toString() {
