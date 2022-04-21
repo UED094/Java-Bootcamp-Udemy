@@ -3,9 +3,10 @@ package models;
 import java.util.ArrayList;
 
 public class Cart {
-    private ArrayList<Item> items = new ArrayList<Item>();
+    private ArrayList<Item> items;
 
     public Cart() {
+        this.items = new ArrayList<Item>();
     }
 
     public Cart(ArrayList<Item> items) {
@@ -19,7 +20,7 @@ public class Cart {
     }
 
     public void setItem(int index, Item item) {
-        this.items.add(new Item(item));
+        this.items.set(index, new Item(item));
     }
 
     /**

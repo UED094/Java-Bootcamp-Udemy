@@ -62,9 +62,9 @@ public class Item {
         return Objects.equals(name, item.name) && price == item.price;
     }
 
-    // @Override
-    // public int hashCode() {
-    // return Objects.hash(name, price);
-    // }
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, price);
+    }
 
 }
