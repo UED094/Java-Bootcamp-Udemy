@@ -50,6 +50,9 @@ public class Cart {
      *             1. Removes the item that matches the name passed in.
      */
     public void remove(String name) {
+        if (this.items.isEmpty()) {
+            throw new IllegalStateException("There is no item to be removed.");
+        }
         for (int i = 0; i < this.items.size(); i++) {
             if (this.items.get(i).getName().equals(name)) {
                 this.items.remove(i);
@@ -69,6 +72,9 @@ public class Cart {
      *         4. Returns a String that resembles a receipt. See below.
      */
     public String checkout() {
+        if (this.items.isEmpty()) {
+            throw new IllegalStateException("There is no item to be checkout.");
+        }
         double subtotal = 0;
         for (int i = 0; i < this.items.size(); i++) {
             subtotal += this.items.get(i).getPrice();
