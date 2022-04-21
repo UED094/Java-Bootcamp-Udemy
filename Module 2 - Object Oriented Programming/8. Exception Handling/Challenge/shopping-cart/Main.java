@@ -1,15 +1,16 @@
+import models.Cart;
 import models.Item;
 
 public class Main {
 
     public static void main(String[] args) {
-        Item celery = new Item("Celery", 0.99);
-        Item spinach = new Item("Spinach", 0.99);
-        Item coriander = new Item("Coriander", 1.29);
 
-        System.out.print(celery + "\t");
-        System.out.print(spinach + "\t");
-        System.out.print(coriander + "\t");
+        Cart cart = new Cart();
+        cart.add(new Item("Celery", 0.99));
+        cart.add(new Item("Celery", 0.99));
+        cart.add(new Item("Spinach", 0.99));
+        cart.add(new Item("Coriander", 1.29));
+        System.out.println(cart);
 
     }
 
