@@ -1,5 +1,7 @@
 package src.main.models;
 
+import java.util.Objects;
+
 public class Movie {
     private String name;
     private String format;
@@ -38,7 +40,7 @@ public class Movie {
     public String getName() {
         return name;
     }
-    
+
     public String getFormat() {
         return format;
     }
@@ -96,11 +98,29 @@ public class Movie {
 
     public String toString() {
         return "\t Name: " + this.name + "\n" +
-               "\t Format: " + this.format + "\n" +
-               "\t Rating: " + this.rating + "\n" +
-               "\t Selling Price: " + this.sellingPrice + "\n" +
-               "\t Rental Price: " + this.rentalPrice + "\n" +
-               "\t Availability: " + (this.isAvailable ? "in-stock" : "rented") + "\n";
+                "\t Format: " + this.format + "\n" +
+                "\t Rating: " + this.rating + "\n" +
+                "\t Selling Price: " + this.sellingPrice + "\n" +
+                "\t Rental Price: " + this.rentalPrice + "\n" +
+                "\t Availability: " + (this.isAvailable ? "in-stock" : "rented") + "\n";
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == this)
+            return true;
+        if (!(o instanceof Movie)) {
+            return false;
+        }
+        Movie movie = (Movie) o;
+        return Objects.equals(name, movie.name) && Objects.equals(format, movie.format) && rating == movie.rating
+                && sellingPrice == movie.sellingPrice && rentalPrice == movie.rentalPrice
+                && isAvailable == movie.isAvailable;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, format, rating, sellingPrice, rentalPrice, isAvailable);
     }
 
 }

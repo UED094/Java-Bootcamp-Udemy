@@ -5,11 +5,11 @@ A movie is described by its name, format, and rating.
                Test Cases
 ----------------------------------------
 - adding a movie
-    - `[identify test case 1]`
+    - test store to check if the movie is exist after adding the movie
 - selling a movie
-    - `[identify test case 2]`
-    - `[identify state exception test case]`
+    - check if the movie still available
+    - check if the movie is on-sale eventhough it is rented or sold earlier
 - renting a movie
-    - `[identify test case 4]`
+    - check if the state of the movie changes after renting
 - returning a movie
-    - `[identify test case 5]`
+    - check if the availablity state change of the movie after return
