@@ -88,6 +88,10 @@ public class Cart {
                 "\tTotal: $" + total + "\n";
     }
 
+    public boolean isEmpty() {
+        return this.items.isEmpty();
+    }
+
     @Override
     public String toString() {
         String temp = "";
