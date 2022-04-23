@@ -48,6 +48,9 @@ public class Cart {
     }
 
     public void remove(String name) {
+        if (this.items.isEmpty()) {
+            throw new IllegalStateException();
+        }
         this.items.removeIf(item -> item.getName().equals(name));
     }
 
@@ -62,6 +65,20 @@ public class Cart {
 
     public double getTotal(double subtotal, double tax) {
         return subtotal + tax;
+    }
+
+    public String checkout() {
+        if (this.items.isEmpty()) {
+            throw new IllegalStateException();
+        }
+        return "\tRECEIPT\n\n" +
+                "\tSubtotal: $" + getSubtotal() + "\n" +
+                "\tTax: $" + getTax(getSubtotal()) + "\n" +
+                "\tTotal: $" + getTotal(getSubtotal(), getTax(getSubtotal())) + "\n";
+    }
+
+    public void clear() {
+        this.items.clear();
     }
 
 }

@@ -52,4 +52,17 @@ public class CartTest {
         assertEquals(56.5, cart.getTotal(50, 6.5));
     }
 
+    @Test(expected = IllegalStateException.class)
+    public void invalidRemoveState() {
+        cart.remove("Crush");
+        cart.remove("Pepsi");
+        cart.remove("Pepsi");
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void name() {
+        cart.clear();
+        cart.checkout();
+    }
+
 }
