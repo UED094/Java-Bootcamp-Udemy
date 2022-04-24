@@ -13,12 +13,8 @@ public class Main {
                                 new String[] { "Angelina", "Ginny", "Katie" }),
                                 new Team("SLYTHERIN", "Vincent", "Draco",
                                                 new String[] { "Bridget", "Harper", "Malcolm" }));
-
-                Integer score = game.getScore(new Team("GRYFFINDOR", "Oliver", "Harry",
-                                new String[] { "Angelina", "Ginny", "Katie" }));
-
-                game.setScore(new Team("GRYFFINDOR", "Oliver", "Harry",
-                                new String[] { "Angelina", "Ginny", "Katie" }), 50);
+                System.out.println(game.simulate(
+                                "<chaser> starts with the quaffle, speeds off towards the goal posts, and scores! 10 points!"));
         }
 
         /**
