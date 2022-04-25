@@ -4,31 +4,53 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.ThreadPoolExecutor;
 
 public class Main {
 
     static final String SALES = "data/sales.csv"; // Use backslash Windows users
+    static double furniture = 0;
+    static double technology = 0;
+    static double supplies = 0;
+    static double average = 0;
 
     public static void main(String[] args) {
 
         try {
+
+            int nThreads = Runtime.getRuntime().availableProcessors();
+            ExecutorService executor = Executors.newFixedThreadPool(nThreads);
             Path path = Paths.get(Thread.currentThread().getContextClassLoader().getResource(SALES).toURI());
 
-            Thread thread2 = new Thread(() -> average(path, "Furniture"));
-            Thread thread3 = new Thread(() -> average(path, "Technology"));
-            Thread thread4 = new Thread(() -> average(path, "Office Supplies"));
-            Thread thread5 = new Thread(() -> totalAverage(path));
-
-            thread2.start();
-            thread3.start();
-            thread4.start();
-            thread5.start();
+            Future<Double> future = executor.submit(() -> average(path, "Furniture"));
+            Future<Double> future2 = executor.submit(() -> average(path, "Technology"));
+            Future<Double> future3 = executor.submit(() -> average(path, "Office Supplies"));
+            Future<Double> future4 = executor.submit(() -> totalAverage(path));
 
             Scanner scan = new Scanner(System.in);
             System.out.print("Please enter your name to access the Global Superstore dataset: ");
             String name = scan.nextLine();
-            System.out.println("Access Denied. We apologize for the inconvenience. Have a good day " + name + ".");
-            scan.close();
+            try {
+                furniture = future.get();
+                technology = future2.get();
+                supplies = future3.get();
+                average = future4.get();
+
+                System.out.println("\nThank you " + name + ". The average sales for Global Superstore are:\n");
+                System.out.println("Average Furniture Sales: " + furniture);
+                System.out.println("Average Technology Sales: " + technology);
+                System.out.println("Average Office Supplies Sales: " + supplies);
+                System.out.println("Total Average: " + average);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            } finally {
+                executor.shutdown();
+                scan.close();
+            }
 
         } catch (URISyntaxException e) {
             System.out.println(e.getMessage());
